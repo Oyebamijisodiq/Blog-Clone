@@ -92,7 +92,7 @@ blog_clone/
 │   └── ...
 │
 ├── manage.py              # Django management script
-├── db.sqlite3             # SQLite database file
+├── db.sql                 # SQL database file
 └── requirements.txt       # Python dependencies
 ```
 
