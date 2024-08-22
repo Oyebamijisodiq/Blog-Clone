@@ -1,0 +1,108 @@
+.techfont{
+    font-family: 'Russon One', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.bigbrand{
+    font-size: 1.5em;
+}
+
+.centerstage{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+body {
+  background-image: radial-gradient(circle, #123, #000);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  perspective: 50em;
+  overflow: hidden;
+
+
+
+  }
+
+  .posttitle{
+    font-family: 'Russo One',sans-serif;
+    font-size: 3em;
+    text-align: center;
+  }
+
+.postcontent{
+    font-family: 'Russo One',sans-serif;
+    font-size: 1.5em;
+    
+  }
+
+  .postdate{
+    text-align: center;
+  }
+
+  .btn-comment{
+    position: absolute;
+    right: 0px;
+  }
+  
+  * {
+    transform-style: preserve-3d;
+  }
+
+
+.scene {
+  position: relative;
+}
+
+.atoms {
+  &:nth-child(2) { translate: -50em 0 -50em; rotate: 120deg; }
+  &:nth-child(3) { translate: 50em 0 -50em;  rotate: 240deg; }
+}
+
+.atom {
+  --duration: 60s;
+  --r: 25em;
+  --atomHue: calc(var(--a) * 60);
+  --delay: calc(var(--duration) / -18 * var(--a, 0));
+
+  position: absolute;
+  animation: atom calc(var(--duration) * 1) var(--delay, 0s) infinite linear;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -3em;
+    background-image: radial-gradient(circle at 25% 25%, hsl(var(--atomHue) 100% 80%), hsl(var(--atomHue) 100% 10%));
+    border-radius: 50%;
+    box-shadow: 0 0 1em #0007;
+  }
+  
+  i {
+    --duration: 16s;
+    --r: 5em;
+    --delay: calc(var(--duration) / -3 * var(--i, 0) - var(--a) * 0.7s);
+    --iHue: calc((var(--i, 0) * 5) + var(--atomHue) + 30);
+    
+    position: absolute;
+    inset: -1em;
+    background-image: radial-gradient(circle at 25% 25%, hsl(var(--iHue, calc(var(--atomHue) + 180)) 100% 80%), hsl(var(--iHue, calc(var(--atomHue) + 180)) 100% 10%));
+    border-radius: 50%;
+    box-shadow: 0 0 1em #0007;
+    animation: atom var(--duration) var(--delay, 0s) infinite linear;
+
+    &:nth-child(2) { --i: 1; }
+    &:nth-child(3) { --i: 2; }
+  }
+}
+
+@keyframes atom {
+  from { transform: rotateZ(0deg) rotateY(0deg) translateZ(var(--r)) rotateY(2880deg) rotateZ(360deg); }
+  to { transform: rotateZ(360deg) rotateY(2880deg) translateZ(var(--r)) rotateY(0deg) rotateZ(0deg); }
+}
